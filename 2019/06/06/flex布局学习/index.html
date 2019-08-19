@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="张鑫旭写的真的太详细太棒了 ( ̀⌄ ́)链接： 写给自己看的 display: felx 布局教程  总览   作用在flex容器上 作用在flex子项上     flex-direction order   flex-wrap flex-grow   flex-flow flex-shrink   justufy-content flex-basis   align-items flex">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局学习">
+<meta property="og:url" content="https://github.com/PrettyMask/2019/06/06/flex布局学习/index.html">
+<meta property="og:site_name" content="fefairy">
+<meta property="og:description" content="张鑫旭写的真的太详细太棒了 ( ̀⌄ ́)链接： 写给自己看的 display: felx 布局教程  总览   作用在flex容器上 作用在flex子项上     flex-direction order   flex-wrap flex-grow   flex-flow flex-shrink   justufy-content flex-basis   align-items flex">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-25T07:10:22.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex布局学习">
+<meta name="twitter:description" content="张鑫旭写的真的太详细太棒了 ( ̀⌄ ́)链接： 写给自己看的 display: felx 布局教程  总览   作用在flex容器上 作用在flex子项上     flex-direction order   flex-wrap flex-grow   flex-flow flex-shrink   justufy-content flex-basis   align-items flex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/PrettyMask/2019/06/06/flex布局学习/">
+
+
+
+
+
+  <title>flex布局学习 | fefairy</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">fefairy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/PrettyMask/2019/06/06/flex布局学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caramel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fefairy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">flex布局学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-06T17:52:51+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>张鑫旭写的真的太详细太棒了 <code>( ̀⌄ ́)</code><br>链接： <a href="https://www.zhangxinxu.com/wordpress/2018/10/display-flex-css3-css/" target="_blank" rel="noopener">写给自己看的 <code>display: felx</code> 布局教程</a></p>
+</blockquote>
+<h3 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h3><table>
+<thead>
+<tr>
+<th>作用在<code>flex</code>容器上</th>
+<th>作用在<code>flex</code>子项上</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-direction</td>
+<td>order</td>
+</tr>
+<tr>
+<td>flex-wrap</td>
+<td>flex-grow</td>
+</tr>
+<tr>
+<td>flex-flow</td>
+<td>flex-shrink</td>
+</tr>
+<tr>
+<td>justufy-content</td>
+<td>flex-basis</td>
+</tr>
+<tr>
+<td>align-items</td>
+<td>flex</td>
+</tr>
+<tr>
+<td>align-content</td>
+<td>align-selef</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>flex和inline-flex区别在于，inline-flex容器为inline特性，因此可以和图片文字一行显示；flex容器保持块状特性，宽度默认100%，不和内联元素一行显示</p>
+</li>
+<li><p>无论作用在flex容器上，还是作用在flex子项，都是控制的flex子项的呈现，只是前者控制的是整体，后者控制的是个体。</p>
+</li>
+</ol>
+<a id="more"></a>
+<h3 id="作用在-flex-容器上的属性"><a href="#作用在-flex-容器上的属性" class="headerlink" title="作用在 flex 容器上的属性"></a>作用在 <code>flex</code> 容器上的属性</h3><h5 id="1-flex-direction"><a href="#1-flex-direction" class="headerlink" title="1. flex-direction"></a>1. flex-direction</h5><p>控制子项的排列方向</p>
+<h5 id="2-flex-wrap"><a href="#2-flex-wrap" class="headerlink" title="2. flex-wrap"></a>2. flex-wrap</h5><p>子项元素是否换行显示</p>
+<h5 id="3-flex-flow"><a href="#3-flex-flow" class="headerlink" title="3. flex-flow"></a>3. flex-flow</h5><p>flex-direction 和 flex-wrap 的合并写法</p>
+<h5 id="4-justify-content"><a href="#4-justify-content" class="headerlink" title="4. justify-content"></a>4. justify-content</h5><p>flex 子项在水平方向的对齐和布局方式</p>
+<h5 id="5-align-items"><a href="#5-align-items" class="headerlink" title="5. align-items"></a>5. align-items</h5><p>flex 子项在垂直方向上的对齐和布局方式</p>
+<h5 id="6-align-content"><a href="#6-align-content" class="headerlink" title="6. align-content"></a>6. align-content</h5><p>align-content 是指明垂直方向每一行flex元素的对齐和分布方式。如果所有flex子项只有一行，则align-content属性是没有任何效果的</p>
+<h3 id="作用在-flex-子项上的属性"><a href="#作用在-flex-子项上的属性" class="headerlink" title="作用在 flex 子项上的属性"></a>作用在 <code>flex</code> 子项上的属性</h3><h5 id="1-order"><a href="#1-order" class="headerlink" title="1. order"></a>1. order</h5><p>设置子项的排列顺序，默认情况下，每个子项的 <code>order</code> 值都为 0，如果要将其排列顺序往前挪，需要将 <code>order</code> 的值设置为小于 0 的值；往后挪，需要将 <code>order</code> 设置为大于 0 的值。</p>
+<h5 id="2-flex-grow"><a href="#2-flex-grow" class="headerlink" title="2. flex-grow"></a>2. flex-grow</h5><blockquote>
+<p>flex-grow: <number>; /<em> 数值，默认值是 1 </em>/</number></p>
+</blockquote>
+<p><code>flex-grow</code> 不支持负值，默认值是0，表示不占用剩余的空白间隙扩展自己的宽度。如果 <code>flex-grow</code> 大于0，则flex容器剩余空间的分配就会发生，具体规则如下：</p>
+<ul>
+<li>所有剩余空间总量是1。</li>
+<li><p>如果只有一个 <code>flex</code> 子项设置了 <code>flex-grow</code> 属性值：</p>
+<ul>
+<li>如果 <code>flex-grow</code> 值小于1，则扩展的空间就总剩余空间和这个比例的计算值。</li>
+<li>如果 <code>flex-grow</code> 值大于1，则独享所有剩余空间。</li>
+</ul>
+</li>
+<li><p>如果有多个 <code>flex</code> 设置了 <code>flex-grow</code> 属性值：</p>
+<ul>
+<li>如果 <code>flex-grow</code> 值总和小于1，则每个子项扩展的空间就总剩余空间和当前元素设置的 <code>flex-grow</code> 比例的计算值。</li>
+<li>如果 <code>flex-grow</code> 值总和大于1，则所有剩余空间被利用，分配比例就是 <code>flex-grow</code> 属性值的比例。例如所有的flex子项都设置 <code>flex-grow:1</code>，则表示剩余空白间隙大家等分，如果设置的 <code>flex-grow</code> 比例是 <code>1:2:1</code>，则中间的 <code>flex</code> 子项占据一半的空白间隙，剩下的前后两个元素等分。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-flex-shrink"><a href="#3-flex-shrink" class="headerlink" title="3. flex-shrink"></a>3. flex-shrink</h5><blockquote>
+<p>flex-shrink: <number>; /<em> 数值，默认值是 1 </em>/</number></p>
+</blockquote>
+<p><code>flex-shrink</code>不支持负值，默认值是1，也就是默认所有的<code>flex</code>子项都会收缩。如果设置为0，则表示不收缩，保持原始的<code>fit-content</code>宽度。</p>
+<p><code>flex-shrink</code> 的内核跟 <code>flex-grow</code> 很神似，<code>flex-grow</code> 是空间足够时候如何利用空间，<code>flex-shrink</code> 则是空间不足时候如何收缩腾出空间。总有点 <code>CP</code>的味道。</p>
+<p>两者的规则也是类似。已知 <code>flex</code> 子项不换行，且容器空间不足，不足的空间就是“完全收缩的尺寸”：</p>
+<ul>
+<li>如果只有一个 <code>flex</code> 子项设置了 <code>flex-shrink</code> ：<ul>
+<li><code>flex-shrink</code> 值小于1，则收缩的尺寸不完全，会有一部分内容溢出 <code>flex</code> 容器。</li>
+<li><code>flex-shrink</code> 值大于等于1，则收缩完全，正好填满<code>flex</code> 容器。</li>
+</ul>
+</li>
+<li>如果多个 <code>flex</code> 子项设置了 <code>flex-shrink</code> ：<ul>
+<li><code>flex-shrink</code> 值的总和小于1，则收缩的尺寸不完全，每个元素收缩尺寸占“完全收缩的尺寸”的比例就是设置的 <code>flex-shrink</code> 的值。</li>
+<li><code>flex-shrink</code> 值的总和大于1，则收缩完全，每个元素收缩尺寸的比例和 <code>flex-shrink</code> 值的比例一样。下面案例演示的就是此场景。</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-flex-basis"><a href="#4-flex-basis" class="headerlink" title="4. flex-basis"></a>4. flex-basis</h5><ul>
+<li><code>flex-basis</code> 定义了在分配剩余空间之前元素的默认大小。相当于对浏览器提前告知：浏览器兄，我要占据这么大的空间，提前帮我预留好。</li>
+<li>当剩余空间不足的时候，<code>flex</code> 子项的实际宽度并通常不是设置的 <code>flex-basis</code> 尺寸，因为flex布局剩余空间不足的时候默认会收缩。</li>
+</ul>
+<h5 id="5-flex"><a href="#5-flex" class="headerlink" title="5. flex"></a>5. flex</h5><p><code>flex</code> 属性是 <code>flex-grow</code>，<code>flex-shrink</code> 和 <code>flex-basis</code> 的缩写。</p>
+<h5 id="6-align-self"><a href="#6-align-self" class="headerlink" title="6. align-self"></a>6. align-self</h5><p>单独控制某一子项的垂直方向对齐方式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/这可能是最全的三栏布局了/" rel="next" title="这可能是最全的三栏布局了:)">
+                <i class="fa fa-chevron-left"></i> 这可能是最全的三栏布局了:)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/19/深拷贝和浅拷贝/" rel="prev" title="深拷贝和浅拷贝">
+                深拷贝和浅拷贝 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">caramel</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#总览"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用在-flex-容器上的属性"><span class="nav-number">2.</span> <span class="nav-text">作用在 flex 容器上的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-flex-direction"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. flex-direction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-flex-wrap"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. flex-wrap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-flex-flow"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. flex-flow</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-justify-content"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. justify-content</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-align-items"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. align-items</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-align-content"><span class="nav-number">2.0.6.</span> <span class="nav-text">6. align-content</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#作用在-flex-子项上的属性"><span class="nav-number">3.</span> <span class="nav-text">作用在 flex 子项上的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-order"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. order</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-flex-grow"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. flex-grow</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-flex-shrink"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. flex-shrink</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-flex-basis"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. flex-basis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-flex"><span class="nav-number">3.0.5.</span> <span class="nav-text">5. flex</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-align-self"><span class="nav-number">3.0.6.</span> <span class="nav-text">6. align-self</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caramel</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
