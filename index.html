@@ -299,38 +299,22 @@
 
       
         
-          
-            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>如果使用了 fixed 布局的话，键盘弹起，fixed 布局会被替换成 absolute 布局，布局被顶起，键盘收起的时候也不会复原，需要点一下其他区域才能复原，用户体验差。</p>
+          <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>如果使用了 fixed 布局的话，键盘弹起，fixed 布局会被替换成 absolute 布局，布局被顶起，键盘收起的时候也不会复原，需要点一下其他区域才能复原，用户体验差。</p>
 <h3 id="代码解决"><a href="#代码解决" class="headerlink" title="代码解决"></a>代码解决</h3><p>不谈如何绕过这个问题，直面问题。</p>
 <p>思路：</p>
 <ol>
 <li>失去聚焦的时候让布局恢复原位</li>
-<li>有多个输入框的时候，来回聚焦/失焦会产生抖动，所以加个延时</li>
-</ol>
-<p>以下是 react 的写法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">    ...</span><br><span class="line">    onFocus=&#123;()=&gt;&#123;</span><br><span class="line">        clearTimeout(<span class="keyword">this</span>.timer);</span><br><span class="line">    &#125;&#125;</span><br><span class="line">    onBlur=&#123;()=&gt;&#123;</span><br><span class="line">        <span class="keyword">this</span>.timer = setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;, <span class="number">200</span>);</span><br><span class="line">    &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="说下-window-scrollTo"><a href="#说下-window-scrollTo" class="headerlink" title="说下 window.scrollTo()"></a>说下 window.scrollTo()</h3><h4 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scrollTo(x-coord,y-coord )</span><br></pre></td></tr></table></figure>
-<h5 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h5><ul>
-<li>x-coord 是文档中的横轴坐标。</li>
-<li>y-coord 是文档中的纵轴坐标。<h5 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h5>兼容性良好，基本所有浏览器支持</li>
-</ul>
-<h4 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scrollTo(options)</span><br></pre></td></tr></table></figure>
-<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><ul>
-<li>options 是一个包含三个属性的对象:<ul>
-<li>top 等同于  y-coord</li>
-<li>left 等同于  x-coord</li>
-<li>behavior  类型String,表示滚动行为,支持参数 smooth(平滑滚动),instant(瞬间滚动),默认值auto,实测效果等同于instant</li>
-</ul>
-</li>
-<li>示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scrollTo(&#123; </span><br><span class="line">    top: <span class="number">1000</span>, </span><br><span class="line">    behavior: <span class="string">"smooth"</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="兼容性-1"><a href="#兼容性-1" class="headerlink" title="兼容性"></a>兼容性</h5><p>兼容性较差，safari 不支持，edge 不支持，其他浏览器的新版本支持</p>
-
-          
+<li>有多个输入框的时候，来回聚焦/失焦会产生抖动，所以加个延时
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/19/键盘弹起之后的页面错乱问题/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
     
     
     
